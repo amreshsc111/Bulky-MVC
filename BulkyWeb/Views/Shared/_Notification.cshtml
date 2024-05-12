@@ -1,0 +1,12 @@
+﻿@if (TempData.ContainsKey("success") || TempData.ContainsKey("error"))
+{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var messageType = '@TempData["success"]' != null ? "success" : "error";
+            var message = '@TempData["success"]' ?? '@TempData["error"]';
+            toastr[messageType](message);
+        });
+    </script>
+}
